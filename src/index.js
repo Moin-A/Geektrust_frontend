@@ -1,14 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+
+import { createStore } from "redux";
+import { connect, provider } from "react-redux";
+
+const initialstate = {
+  count: 0,
+};
+const incrmentvalue = () => ({
+  type: "INCREMENT",
+});
+const reducer = (state = initialstate, action) => {
+  return state;
+};
+const store = createStore(reducer);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

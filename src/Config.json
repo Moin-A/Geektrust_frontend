@@ -1,0 +1,4 @@
+{
+  "PlanetsEndpoint": "https://findfalcone.herokuapp.com/planets",
+  "VehicleApiEndpoint": "https://findfalcone.herokuapp.com/vehicles"
+}
