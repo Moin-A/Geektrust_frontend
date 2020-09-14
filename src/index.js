@@ -6,24 +6,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import { createStore } from "redux";
-import { connect, provider } from "react-redux";
+import { Provider } from "react-redux";
 
-const initialstate = {
-  count: 0,
-};
-const incrmentvalue = () => ({
-  type: "INCREMENT",
-});
-const reducer = (state = initialstate, action) => {
-  return state;
-};
-const store = createStore(reducer);
+import ConfiguresStore from "./Store/ConfigureStore";
+
+const store = ConfiguresStore();
 
 ReactDOM.render(
-  <provider store={store}>
+  <Provider store={store}>
     <App />
-  </provider>,
+  </Provider>,
   document.getElementById("root")
 );
 

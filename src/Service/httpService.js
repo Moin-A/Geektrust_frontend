@@ -14,4 +14,5 @@ Axios.interceptors.response.use(null, (error) => {
 
 export default {
   get: Axios.get,
+  request: Axios.request,
 };
