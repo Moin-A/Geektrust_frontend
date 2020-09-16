@@ -3,23 +3,27 @@ import { connect } from "react-redux";
 import React, { useState } from "react";
 function ControlledCarousel({ list }) {
   const [index, setIndex] = useState(0);
-
+  const { entities } = list;
+  console.log(entities.planets);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
   return ( // prettier-ignore	
+
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
-      {Object.values(list.result).map((item) => (
+      {Object.values(entities.planets).map((item) => (
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://images.unsplash.com/photo-1598245615049-c86df18526ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            src={`${item.name}.png`}
             alt="First slide"
           />
           <Carousel.Caption>
-      <h3>{item}</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          
+      <h3>{`${item.name}`}</h3>
+      <p>Distance</p>
+            <p>{`${item.distance}`}</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
@@ -29,7 +33,7 @@ function ControlledCarousel({ list }) {
 }
 
 const mapStateToProps = (state) => ({
-  list: state.Destination.planets || { entities: {}, result: {} },
+  list: state.Destination.planets || { entities: { planets: {} }, result: {} },
 });
 
 const mapDispatchToProps = (dispatch) => ({});
