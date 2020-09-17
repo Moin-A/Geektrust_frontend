@@ -1,5 +1,6 @@
 import { Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
+import { MDBBtn } from "mdbreact";
 import React, { useState } from "react";
 function ControlledCarousel({ list }) {
   const [index, setIndex] = useState(0);
@@ -11,23 +12,26 @@ function ControlledCarousel({ list }) {
 
   return ( // prettier-ignore	
 
-    <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
+    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} >
       {Object.values(entities.planets).map((item) => (
         <Carousel.Item>
+      
           <img
-            className="d-block w-100"
+    
+
+            className="d-block w-100 "
             src={`${item.name}.png`}
             alt="First slide"
           />
-          <Carousel.Caption>
-          
+        <Carousel.Caption style={{margin:"3rem"}}>   
       <h3>{`${item.name}`}</h3>
-      <p>Distance</p>
-            <p>{`${item.distance}`}</p>
+      <p>Distance <span>{`${item.distance}`}</span></p>
+         
           </Carousel.Caption>
+          <MDBBtn  style={{position:"absolute",top:"70%",left:"35%",zIndex:"6776"}} color="info">Select</MDBBtn>
         </Carousel.Item>
       ))}
-      ))
+
     </Carousel>
   ); // prettier-ignore
 }
