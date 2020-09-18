@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
-import { MDBCardTitle } from "mdbreact";
+import { MDBCardTitle, MDBBtn, MDBIcon } from "mdbreact";
 import StoreContext from "../Context/storeContext";
 import { loadApi } from "../Store/Destination";
 import { connect, provider } from "react-redux";
@@ -39,6 +39,11 @@ class HomePage extends Component {
               <Slider />
               <Aslider />
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col justify-content-center mt-2 ">
+            <MDBBtn color="primary col justify-content-center ">Submit</MDBBtn>
           </div>
         </div>
       </div>

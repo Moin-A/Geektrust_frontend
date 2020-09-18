@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Planets from "./Components.js/HomePage";
+
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
 import Aslider from "./Components.js/Aweslider";

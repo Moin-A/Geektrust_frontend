@@ -29,18 +29,20 @@ const CarouselPage = ({ list }) => {
       <MDBCarouselInner className="mt-2">
         {Object.values(entities.vehicle).map((item, index) => (
           <MDBCarouselItem itemId={index}>
-            <MDBView>
+            <MDBView hover>
               <img
-                className="d-block w-100"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                style={{ height: "12rem" }}
+                className="d-block h-60 w-100 img-fluid z-depth-5"
+                src={`${item.name}.png`}
                 alt="First slide"
               />
+
               <MDBMask overlay="black-light" />
             </MDBView>
 
             <MDBCardBody style={{ margin: 0, padding: 0 }}>
               <MDBCardTitle>{item.name} </MDBCardTitle>
-              <MDBBtn color="info">Select</MDBBtn>
+              <MDBBtn color="info col">Select</MDBBtn>
             </MDBCardBody>
           </MDBCarouselItem>
         ))}
