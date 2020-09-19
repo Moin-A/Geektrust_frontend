@@ -14,7 +14,7 @@ class HomePage extends Component {
         <div className="row">
           <div className="col-3  ">
             <div className="block-example border border-primary  rounded p-1 ">
-              <MDBCardTitle className="text-center">Planets</MDBCardTitle>
+              <MDBCardTitle className="text-center ">Planets</MDBCardTitle>
               <Slider />
               <Aslider />
             </div>

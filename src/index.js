@@ -4,6 +4,8 @@ import "../src/index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
+import "../src/index.css";
+
 import * as serviceWorker from "./serviceWorker";
 
 import { Provider } from "react-redux";

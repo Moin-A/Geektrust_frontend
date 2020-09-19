@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Planets from "./Components.js/HomePage";
-
+import Login from "./Components.js/LoginPage";
+import Startup from "./Components.js/Signuppage";
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
 import Aslider from "./Components.js/Aweslider";
+import "../src/index.css";
 
 import * as actions from "./Store/Destination";
 // import Slider from "./Components.js/Slider";
@@ -22,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Planets />
+        <Startup />
       </Provider>
     );
   }
