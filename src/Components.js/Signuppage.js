@@ -1,8 +1,19 @@
 import React, { Component } from "react";
+import ConfirmDialog from "./Dialog";
 import "../index.css";
+
 import Form from "../Utils/Form";
 import Joi from "joi-browser";
-import { MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCard } from "mdbreact";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCardBody,
+  MDBCard,
+  MDBBtn,
+  MDBModal,
+  MDBModalBody,
+} from "mdbreact";
 import Loginform from "./LoginPage";
 
 class BackgroundImagePage extends Form {
@@ -18,9 +29,10 @@ class BackgroundImagePage extends Form {
 
   doSubmit() {
     this.setState({ Dialog: true });
+    debugger;
     setTimeout(() => {
       this.props.history.push({
-        pathname: "/profilepage",
+        pathname: "/info",
         state: { detail: this.state.data.Name },
       });
       this.setState({ Dialog: false });
@@ -30,11 +42,16 @@ class BackgroundImagePage extends Form {
     return (
       <div className="bg">
         <MDBContainer>
+          <ConfirmDialog
+            open={this.state.Dialog}
+            title={this.state.title}
+            content={this.state.content}
+          />
           <MDBRow>
             <MDBCol md="4" className="mt-4 shadow-box-example z-depth-5">
               <MDBCard id="classic-card">
                 <MDBCardBody className="white-text p-2">
-                  <form>
+                  <form onSubmit={this.handleSubmit}>
                     <h3 className="text-center">Register</h3>
                     <hr className="hr-light" />
                     {this.renderInput("Name", "Name")}

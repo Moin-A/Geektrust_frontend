@@ -2,46 +2,29 @@ import React, { Component } from "react";
 import Slider from "./Slider";
 import { MDBCardTitle, MDBBtn, MDBIcon } from "mdbreact";
 import StoreContext from "../Context/storeContext";
-import { loadApi } from "../Store/Destination";
-import { connect, provider } from "react-redux";
-import { Card } from "react-bootstrap";
+import { loadApi, selectPlanet } from "../Store/Slice/Destination";
+import { connect } from "react-redux";
 import Aslider from "./Aweslider";
+const Maps = ["First", "second", "third", "fourth"];
 class HomePage extends Component {
   static contextType = StoreContext;
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-3  ">
-            <div className="block-example border border-primary  rounded p-1 ">
-              <MDBCardTitle className="text-center ">Planets</MDBCardTitle>
-              <Slider />
-              <Aslider />
+        <div className="row p-2">
+          {Maps.map((item) => (
+            <div className="col-lg-3 col-md-6  col-auto-sm-6 ">
+              <div className="block-example border border-primary  rounded p-1 mb-2 ">
+                <MDBCardTitle className="text-center text-shadow " tag="h1">
+                  Planets
+                </MDBCardTitle>
+                <Slider index={item} />
+                <Aslider index={item} />
+              </div>
             </div>
-          </div>
-          <div className="col-3  ">
-            <div className="block-example border border-primary p-1 rounded ">
-              <MDBCardTitle className="text-center">Planets</MDBCardTitle>
-              <Slider />
-              <Aslider />
-            </div>
-          </div>
-          <div className="col-3  ">
-            <div className="block-example border border-primary p-1 rounded ">
-              <MDBCardTitle className="text-center">Planets</MDBCardTitle>
-              <Slider />
-              <Aslider />
-            </div>
-          </div>
-          <div className="col-3  ">
-            <div className="block-example border border-primary p-1 rounded">
-              <MDBCardTitle className="text-center">Planets</MDBCardTitle>
-              <Slider />
-              <Aslider />
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="row">
+        <div className="row p-2">
           <div className="col justify-content-center mt-2 ">
             <MDBBtn color="primary col justify-content-center ">Submit</MDBBtn>
           </div>
@@ -56,5 +39,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loadBugs: () => dispatch(loadApi()),
+  selectPlanet: () => dispatch(selectPlanet(this.props.index)),
 });
 export default connect(mapStateToProps)(HomePage);

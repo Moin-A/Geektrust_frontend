@@ -26,6 +26,7 @@ class Form extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     localStorage.setItem(this.state.data.Name, JSON.stringify(this.state.data));

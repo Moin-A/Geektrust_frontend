@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as actionsApi from "./api";
+import * as actionsApi from "../api";
 
 const slice = createSlice({
   name: "loadVehicleList",
@@ -21,6 +21,11 @@ export const loadApi = (url, name) => (dispatch, getState) => {
       name,
     })
   );
+};
+
+export const selectPlanet = (url) => (dispatch, getState) => {
+  // if (getState().Destination.vehicle) return;
+  dispatch(actionsApi.selectPlanet(url));
 };
 
 export const { loadvehicleApi, CallSuccess } = slice.actions;

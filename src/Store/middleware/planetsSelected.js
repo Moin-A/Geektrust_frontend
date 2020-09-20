@@ -3,7 +3,7 @@ import * as actions from "../api";
 import * as Actions from "../Slice/Destination";
 import Normalize from "../../Service/Normalize";
 
-const api = ({ dispatch }) => (next) => async (action) => {
+const planetsSelected = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
   next(action);
   const { url, method, data } = action.payload;

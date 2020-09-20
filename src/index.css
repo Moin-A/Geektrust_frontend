@@ -8,62 +8,50 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#classicformpage .view {
-  background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-  opacity: 0.5;
-}
-
-#classicformpage .gradient {
-  background: -webkit-linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-  background: -webkit-gradient(
-    linear,
-    45deg,
-    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
-  );
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-}
-
-#classicformpage .card {
-  background-color: rgba(126, 123, 215, 0.2);
-  opacity: 0.5;
-}
-
-#classicformpage h6 {
-  line-height: 1.7;
-}
-
-#classicformpage .navbar {
-  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
-#classicformpage .top-nav-collapse {
-  background: #424f95 !important;
-}
-
-@media (max-width: 768px) {
-  #classicformpage .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
-  }
-}
-
-#classicformpage label {
-  color: #fff !important;
+  padding-top: -3%;
 }
 
 .card {
   opacity: 0.5;
+}
+
+.text-shadow {
+  font-size: 2rem;
+  font-family: "Luckiest Guy";
+  color: rgba(44, 23, 23, 0.756);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 2px 2px rgba(69, 63, 164, 0.619);
+}
+.text-shadow h3,
+.text-shadow p {
+  color: rgba(228, 215, 215, 0.516);
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+.aws-btn {
+  --button-default-height: 45px;
+  --button-default-font-size: 16px;
+  --button-default-border-radius: 6px;
+  --button-horizontal-padding: 34px;
+  --button-raise-level: 9px;
+  --button-hover-pressure: 1.5;
+  --transform-speed: 0.325s;
+  --button-primary-color: #475472;
+  --button-primary-color-dark: #2a3143;
+  --button-primary-color-light: #d4d9e4;
+  --button-primary-color-hover: #424e6a;
+  --button-primary-border: none;
+  --button-secondary-color: #fffc6c;
+  --button-secondary-color-dark: #b9b500;
+  --button-secondary-color-light: #6c6a00;
+  --button-secondary-color-hover: #fffb3e;
+  --button-secondary-border: none;
+  --button-anchor-color: #f3c8ad;
+  --button-anchor-color-dark: #734922;
+  --button-anchor-color-light: #4c3016;
+  --button-anchor-color-hover: #f1bfa0;
+  --button-anchor-border: 1px solid #8c633c;
 }

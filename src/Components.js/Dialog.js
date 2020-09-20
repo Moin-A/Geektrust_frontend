@@ -18,11 +18,11 @@ class SimpleDialog extends React.Component {
     return (
       <Dialog
         fullWidth={true}
-        maxWidth={"md"}
+        maxWidth={"sm"}
         style={{ textAlign: "center" }}
         PaperProps={{
           style: {
-            fontSize: "2rem",
+            fontSize: "1rem",
           },
         }}
         aria-labelledby="simple-dialog-title"
@@ -37,7 +37,7 @@ class SimpleDialog extends React.Component {
           disableTypography={true}
           classes={dia}
           id="simple-dialog-title"
-          style={{ backgroundColor: "navy", color: "white", fontSize: "35px" }}
+          style={{ backgroundColor: "navy", color: "white", fontSize: "2rem" }}
         >
           {title}
         </DialogTitle>

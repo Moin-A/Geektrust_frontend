@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../src/index.css";
+import "./fonts/LuckiestGuy-Regular.ttf";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
-import "../src/index.css";
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -18,6 +17,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
+
   document.getElementById("root")
 );
 

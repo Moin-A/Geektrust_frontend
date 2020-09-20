@@ -1,8 +1,10 @@
 import { Carousel } from "react-bootstrap";
+import { loadApi, selectPlanet } from "../Store/Slice/Vehicle";
 import { connect } from "react-redux";
 import { MDBBtn, MDBView, MDBMask } from "mdbreact";
 import React, { useState } from "react";
-function ControlledCarousel({ list }) {
+function ControlledCarousel(props) {
+  const { list, destination } = props;
   const [index, setIndex] = useState(0);
   const { entities } = list;
   console.log(entities.planets);
@@ -25,13 +27,14 @@ function ControlledCarousel({ list }) {
             alt="First slide"
           />
 
-          <Carousel.Caption style={{ margin: "3rem" }}>
+          <Carousel.Caption className={"text-shadow m-3"}>
             <h3>{`${item.name}`}</h3>
             <p>
               Distance <span>{`${item.distance}`}</span>
             </p>
           </Carousel.Caption>
           <MDBBtn
+            onClick={() => console.log(destination)}
             style={{
               position: "absolute",
               top: "70%",
@@ -52,6 +55,8 @@ const mapStateToProps = (state) => ({
   list: state.Destination.planets || { entities: { planets: {} }, result: {} },
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  selectPlanet: (item) => dispatch(selectPlanet(item)),
+});
 
-export default connect(mapStateToProps)(ControlledCarousel);
+export default connect(mapStateToProps, mapDispatchToProps)(ControlledCarousel);
