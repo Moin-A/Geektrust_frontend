@@ -5,9 +5,8 @@ import StoreContext from "../Context/storeContext";
 import { loadApi, selectPlanet } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
 import Aslider from "./Aweslider";
-const Maps = ["First", "second", "third", "fourth"];
+const Maps = ["First", "Second", "Third", "Fourth"];
 class HomePage extends Component {
-  static contextType = StoreContext;
   render() {
     return (
       <div className="container-fluid">
@@ -15,9 +14,23 @@ class HomePage extends Component {
           {Maps.map((item) => (
             <div className="col-lg-3 col-md-6  col-auto-sm-6 ">
               <div className="block-example border border-primary  rounded p-1 mb-2 ">
-                <MDBCardTitle className="text-center text-shadow " tag="h1">
-                  Planets
-                </MDBCardTitle>
+                <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
+                  planet :{" "}
+                  <span>
+                    {this.props.userinput[item]
+                      ? this.props.userinput[item].planetname
+                      : "--"}
+                  </span>
+                </h4>
+                <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
+                  vehicle :{" "}
+                  <span>
+                    {" "}
+                    {this.props.userinput[item]
+                      ? this.props.userinput[item].vehiclename
+                      : "--"}
+                  </span>
+                </h4>
                 <Slider destination={item} />
                 <Aslider destination={item} />
               </div>
@@ -34,10 +47,11 @@ class HomePage extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  state,
+  list: state.Destination.planets || {
+    entities: { planets: {} },
+    result: {},
+  },
+  userinput: state.Destination.userinput || {},
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  loadBugs: () => dispatch(loadApi()),
-});
 export default connect(mapStateToProps)(HomePage);

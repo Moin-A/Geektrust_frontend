@@ -3,7 +3,6 @@ import { Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
 import { MDBBtn } from "mdbreact";
 import { renderVehiclelist } from "../Store/Slice/Destination";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 const CarouselPage = (props) => {
   const { list, destination, userinput } = props;
@@ -14,7 +13,7 @@ const CarouselPage = (props) => {
     setIndex(selectedIndex);
   };
   const { entities, result } = list;
-
+  console.log(list, userinput[destination].vehiclename);
   return (
     <Carousel
       indicators={false}
@@ -47,11 +46,7 @@ const CarouselPage = (props) => {
             <p>{`Max Dist :${item.max_distance}`}</p>
           </Carousel.Caption>
           <MDBBtn
-            disabled={
-              item.total_no == 0 || userinput[destination]
-                ? userinput[destination].vehiclename
-                : null
-            }
+            disabled={item.total_no == 0 || userinput[destination].vehiclename}
             onClick={() => props.selectVehicle({ ...item, destination })}
             style={{
               position: "absolute",

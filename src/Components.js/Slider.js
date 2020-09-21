@@ -7,7 +7,6 @@ function ControlledCarousel(props) {
   const { list, destination, userinput } = props;
   const [index, setIndex] = useState(0);
   const { entities, result } = list;
-  console.log("result", result);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -36,9 +35,9 @@ function ControlledCarousel(props) {
           </Carousel.Caption>
           <MDBBtn
             disabled={
-              userinput[destination]
-                ? userinput[destination].planetname
-                : !result.includes(item.name)
+              userinput[destination].planetname ||
+              userinput[destination].vehicle_max_mileagae < item.distance ||
+              !result.includes(item.name)
             }
             onClick={() => props.selectPlanet({ ...item, destination })}
             style={{
@@ -60,9 +59,9 @@ function ControlledCarousel(props) {
 const mapStateToProps = (state) => ({
   list: state.Destination.planets || {
     entities: { planets: {} },
-    result: {},
+    result: [],
   },
-  userinput: state.Destination.userinput || {},
+  userinput: state.Destination.userinput,
 });
 
 const mapDispatchToProps = (dispatch) => ({
