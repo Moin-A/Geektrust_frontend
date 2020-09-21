@@ -18,7 +18,7 @@ class HomePage extends Component {
                 <MDBCardTitle className="text-center text-shadow " tag="h1">
                   Planets
                 </MDBCardTitle>
-                <Slider index={item} />
+                <Slider destination={item} />
                 <Aslider index={item} />
               </div>
             </div>
@@ -39,6 +39,5 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loadBugs: () => dispatch(loadApi()),
-  selectPlanet: () => dispatch(selectPlanet(this.props.index)),
 });
 export default connect(mapStateToProps)(HomePage);

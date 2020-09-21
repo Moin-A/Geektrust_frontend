@@ -3,5 +3,4 @@ import Destination from "./Slice/Destination";
 import Vehicle from "./Slice/Vehicle";
 export default combineReducers({
   Destination,
-  Vehicle,
 });

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
 import { MDBBtn } from "mdbreact";
+import { renderVehiclelist } from "../Store/Slice/Destination";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-const CarouselPage = ({ list }) => {
+const CarouselPage = (props) => {
+  const { list } = props;
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -39,8 +42,11 @@ const CarouselPage = ({ list }) => {
             }}
           >
             <h3>{`${item.name}`}</h3>
+            <p>{`Count :${item.total_no}`}</p>
           </Carousel.Caption>
           <MDBBtn
+            disabled={item.total_no == 0}
+            onClick={() => props.selectVehicle(item)}
             style={{
               position: "absolute",
               top: "70%",
@@ -61,12 +67,8 @@ const mapStateToProps = (state) => ({
   list: state.Destination.vehicle || { entities: { vehicle: {} }, result: {} },
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  selectVehicle: (item) => dispatch(renderVehiclelist(item)),
+});
 
-export default connect(mapStateToProps)(CarouselPage);
-
-// <MDBCardBody style={{ margin: 0, padding: 0 }}>
-// <MDBCardTitle>{item.name} </MDBCardTitle>
-// <MDBBtn color="info col">Select</MDBBtn>
-// </MDBCardBody>
-// </MDBCarouselItem>
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselPage);
