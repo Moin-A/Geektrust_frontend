@@ -19,7 +19,7 @@ class HomePage extends Component {
                   Planets
                 </MDBCardTitle>
                 <Slider destination={item} />
-                <Aslider index={item} />
+                <Aslider destination={item} />
               </div>
             </div>
           ))}

@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { MDBBtn, MDBView, MDBMask } from "mdbreact";
 import React, { useState } from "react";
 function ControlledCarousel(props) {
-  const { list, destination } = props;
+  const { list, destination, userinput } = props;
   const [index, setIndex] = useState(0);
   const { entities, result } = list;
-  console.log("resukt", result);
+  console.log("result", result);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -35,8 +35,12 @@ function ControlledCarousel(props) {
             </p>
           </Carousel.Caption>
           <MDBBtn
-            disabled={result.indexOf(item.name) === -1}
-            onClick={() => props.selectPlanet(item)}
+            disabled={
+              userinput[destination]
+                ? userinput[destination].planetname
+                : !result.includes(item.name)
+            }
+            onClick={() => props.selectPlanet({ ...item, destination })}
             style={{
               position: "absolute",
               top: "70%",
@@ -54,7 +58,11 @@ function ControlledCarousel(props) {
 }
 
 const mapStateToProps = (state) => ({
-  list: state.Destination.planets || { entities: { planets: {} }, result: {} },
+  list: state.Destination.planets || {
+    entities: { planets: {} },
+    result: {},
+  },
+  userinput: state.Destination.userinput || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({

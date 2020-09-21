@@ -6,14 +6,15 @@ import { renderVehiclelist } from "../Store/Slice/Destination";
 import { propTypes } from "react-bootstrap/esm/Image";
 
 const CarouselPage = (props) => {
-  const { list } = props;
+  const { list, destination, userinput } = props;
+
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
   const { entities, result } = list;
-  console.log("entities", entities);
+
   return (
     <Carousel
       indicators={false}
@@ -38,15 +39,20 @@ const CarouselPage = (props) => {
           <Carousel.Caption
             className="text-shadow"
             style={{
-              margin: "3rem",
+              margin: "2rem",
             }}
           >
             <h3>{`${item.name}`}</h3>
             <p>{`Count :${item.total_no}`}</p>
+            <p>{`Max Dist :${item.max_distance}`}</p>
           </Carousel.Caption>
           <MDBBtn
-            disabled={item.total_no == 0}
-            onClick={() => props.selectVehicle(item)}
+            disabled={
+              item.total_no == 0 || userinput[destination]
+                ? userinput[destination].vehiclename
+                : null
+            }
+            onClick={() => props.selectVehicle({ ...item, destination })}
             style={{
               position: "absolute",
               top: "70%",
@@ -64,7 +70,12 @@ const CarouselPage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  list: state.Destination.vehicle || { entities: { vehicle: {} }, result: {} },
+  list: state.Destination.vehicle || {
+    entities: { vehicle: {} },
+    result: {},
+    userinput: {},
+  },
+  userinput: state.Destination.userinput || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({
