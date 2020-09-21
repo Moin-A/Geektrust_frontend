@@ -35,6 +35,7 @@ const slice = createSlice({
   reducers: {
     CallSuccess: (state, { payload }) => {
       state[Object.keys(payload.entities).toString()] = payload;
+      state[`clone${Object.keys(payload.entities).toString()}`] = payload;
     },
     selectPlanet: (state, { payload }) => {
       state.planets.result = state.planets.result.filter(

@@ -12,7 +12,7 @@ class HomePage extends Component {
       <div className="container-fluid">
         <div className="row p-2">
           {Maps.map((item) => (
-            <div className="col-lg-3 col-md-6  col-auto-sm-6 ">
+            <div className="col-lg-3 col-md-3  col-sm-6 ">
               <div className="block-example border border-primary  rounded p-1 mb-2 ">
                 <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
                   planet :{" "}
