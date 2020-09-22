@@ -4,12 +4,18 @@ import { MDBCardTitle, MDBBtn, MDBIcon } from "mdbreact";
 import StoreContext from "../Context/storeContext";
 import { loadApi, selectPlanet } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
+import Dialog from "./Dialog";
 import Aslider from "./Aweslider";
 const Maps = ["First", "Second", "Third", "Fourth"];
 class HomePage extends Component {
   render() {
     return (
       <div className="container-fluid">
+        <Dialog
+          open={this.props.opendialog}
+          title={"Reset"}
+          content={"Reseting the counter"}
+        />
         <div className="row p-2">
           {Maps.map((item) => (
             <div className="col-lg-3 col-md-3  col-sm-6 ">
@@ -51,6 +57,7 @@ const mapStateToProps = (state) => ({
     entities: { planets: {} },
     result: {},
   },
+  opendialog: state.opendialog,
   userinput: state.Destination.userinput || {},
 });
 

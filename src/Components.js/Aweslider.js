@@ -52,7 +52,6 @@ const CarouselPage = (props) => {
               position: "absolute",
               top: "70%",
               left: "35%",
-              zIndex: "6776",
             }}
             color="info"
           >

@@ -5,6 +5,7 @@ import _ from "lodash";
 const slice = createSlice({
   name: "loadVehicleList",
   initialState: {
+    opendialog: false,
     userinput: {
       First: {
         planet_distance: null,
@@ -33,10 +34,12 @@ const slice = createSlice({
     },
   },
   reducers: {
+    ResetCounter: (state, { payload }) => {},
     CallSuccess: (state, { payload }) => {
       state[Object.keys(payload.entities).toString()] = payload;
       state[`clone${Object.keys(payload.entities).toString()}`] = payload;
     },
+
     selectPlanet: (state, { payload }) => {
       state.planets.result = state.planets.result.filter(
         (item) => item !== payload.name
@@ -56,7 +59,6 @@ const slice = createSlice({
       state.vehicle.result = state.vehicle.result.filter(
         (item) => item !== payload.name
       );
-
       state.userinput = {
         ...state.userinput,
         [payload.destination]: {
@@ -85,6 +87,10 @@ export const renderPlanetlist = (url) => (dispatch, getState) => {
 
 export const renderVehiclelist = (url) => (dispatch, getState) => {
   dispatch(slice.actions.selectVehicle(url));
+};
+
+export const resetCounter = () => (dispatch, getState) => {
+  dispatch(slice.actions.ResetCounter());
 };
 
 export const { CallSuccess } = slice.actions;
