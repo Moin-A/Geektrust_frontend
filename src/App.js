@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Startup from "./Components.js/Signuppage";
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
@@ -21,6 +20,7 @@ class App extends Component {
     store.dispatch(
       actions.loadApi("https://findfalcone.herokuapp.com/planets", "planets")
     );
+
     store.dispatch(
       actions.loadApi(
         "https://findfalcone.herokuapp.com/token",

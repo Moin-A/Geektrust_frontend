@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
+import http from "../Service/httpService";
 import { DialogContent, DialogActions, Button } from "@material-ui/core";
+import * as actions from "../Store/Slice/Destination";
 
 const store = ConfiguresStore();
 const styles = {
@@ -16,15 +18,24 @@ const styles = {
 
 class SimpleDialog extends React.Component {
   render() {
-    const { classes, title, content, ...other } = this.props;
+    const { classes, title, content, userinput, token, ...other } = this.props;
     const dia = { fontSize: "19px" };
 
-    const handleClickOpen = () => {
-      console.log("OPEn");
-    };
+    const handleSubmit = async () => {
+      const body = {
+        token: token.result[0],
+        planet_names: Object.values(userinput).map((x) => x.planetname),
+        vehicle_names: Object.values(userinput).map((x) => x.vehiclename),
+      };
 
-    const handleClose = () => {
-      store.dispatch(Submit());
+      const response = await http.request({
+        url: "https://findfalcone.herokuapp.com/find",
+        method: "POST",
+        headers: { Accept: "application/json" },
+        data: body,
+      });
+      debugger;
+      this.props.Submit();
     };
 
     return (
@@ -63,7 +74,7 @@ class SimpleDialog extends React.Component {
           >
             Disagree
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleSubmit} color="primary">
             Agree
           </Button>
         </DialogActions>
@@ -75,10 +86,8 @@ class SimpleDialog extends React.Component {
 const SimpleDialogWrapped = withStyles(styles)(SimpleDialog);
 
 const mapStateToProps = (state) => ({
-  list: state.Destination.planets || {
-    entities: { planets: {} },
-    result: {},
-  },
+  userinput: state.Destination.userinput,
+  token: state.Destination.token,
 });
 const mapDispatchToProps = (dispatch) => ({
   Submit: () => dispatch(Submit()),

@@ -83,16 +83,20 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const loadApi = (url, name, method = "GET", headers) => (dispatch) => {
+export const loadApi = (url, name, method = "GET", headers, data = {}) => (
+  dispatch
+) => {
   dispatch(
     actionsApi.apiCallBegan({
       method,
       url,
       name,
       headers,
+      data,
     })
   );
 };
+
 export const renderPlanetlist = (url) => (dispatch, getState) => {
   dispatch(slice.actions.selectPlanet(url));
 };
