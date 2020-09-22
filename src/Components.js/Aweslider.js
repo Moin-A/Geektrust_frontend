@@ -13,7 +13,7 @@ const CarouselPage = (props) => {
     setIndex(selectedIndex);
   };
   const { entities, result } = list;
-  console.log(list, userinput[destination].vehiclename);
+
   return (
     <Carousel
       indicators={false}

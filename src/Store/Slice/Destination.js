@@ -34,10 +34,13 @@ const slice = createSlice({
     },
   },
   reducers: {
-    ResetCounter: (state, { payload }) => {},
+    ResetCounter: (state, { payload }) => {
+      return state.clone;
+    },
     CallSuccess: (state, { payload }) => {
       state[Object.keys(payload.entities).toString()] = payload;
-      state[`clone${Object.keys(payload.entities).toString()}`] = payload;
+      // state[`clone${Object.keys(payload.entities).toString()}`] = payload;
+      state.clone = { ..._.cloneDeep(state) };
     },
 
     selectPlanet: (state, { payload }) => {

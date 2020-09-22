@@ -44,6 +44,7 @@ function ControlledCarousel(props) {
               position: "absolute",
               top: "70%",
               left: "35%",
+              zIndex: 100,
             }}
             color="info"
           >
