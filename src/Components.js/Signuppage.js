@@ -29,7 +29,7 @@ class BackgroundImagePage extends Form {
 
   doSubmit() {
     this.setState({ Dialog: true });
-    debugger;
+
     setTimeout(() => {
       this.props.history.push({
         pathname: "/info",

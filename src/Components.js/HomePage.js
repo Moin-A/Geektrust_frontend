@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
-import { MDBCardTitle, MDBBtn, MDBIcon } from "mdbreact";
-import StoreContext from "../Context/storeContext";
-import { loadApi, selectPlanet, Submit } from "../Store/Slice/Destination";
+import { MDBBtn } from "mdbreact";
+
+import { Submit } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
 import Dialog from "./Dialog";
 import Aslider from "./Aweslider";
@@ -25,7 +25,7 @@ class HomePage extends Component {
             <div className="col-lg-3 col-md-3  col-sm-6 ">
               <div className="block-example border border-primary  rounded p-1 mb-2 ">
                 <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
-                  planet :{" "}
+                  planet :
                   <span>
                     {this.props.userinput[item]
                       ? this.props.userinput[item].planetname
@@ -35,7 +35,6 @@ class HomePage extends Component {
                 <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
                   vehicle :{" "}
                   <span>
-                    {" "}
                     {this.props.userinput[item]
                       ? this.props.userinput[item].vehiclename
                       : "--"}

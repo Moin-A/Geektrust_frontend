@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Dialog from "./Dialog";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import { resetCounter } from "../Store/Slice/Destination";

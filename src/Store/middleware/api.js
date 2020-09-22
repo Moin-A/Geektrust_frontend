@@ -6,13 +6,15 @@ import Normalize from "../../Service/Normalize";
 const api = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
   next(action);
-  const { url, method, data } = action.payload;
+  const { url, method, data, headers } = action.payload;
   try {
     const response = await http.request({
       url,
       method,
       data,
+      headers,
     });
+
     const NormalisedData = Normalize(response.data, action.payload.name);
     dispatch(Actions.CallSuccess(NormalisedData));
   } catch (error) {

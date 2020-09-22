@@ -1,10 +1,13 @@
 import React from "react";
+import { Submit } from "../Store/Slice/Destination";
+import ConfiguresStore from "../Store/ConfigureStore";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import { DialogContent, DialogActions, Button } from "@material-ui/core";
 
+const store = ConfiguresStore();
 const styles = {
   root: {
     backgroundColor: "transparent",
@@ -21,7 +24,7 @@ class SimpleDialog extends React.Component {
     };
 
     const handleClose = () => {
-      console.log("Close");
+      store.dispatch(Submit());
     };
 
     return (
@@ -52,7 +55,12 @@ class SimpleDialog extends React.Component {
         </DialogTitle>
         <DialogContent dividers={true}>{content}</DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={() => {
+              this.props.Submit();
+            }}
+            color="primary"
+          >
             Disagree
           </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
@@ -73,7 +81,7 @@ const mapStateToProps = (state) => ({
   },
 });
 const mapDispatchToProps = (dispatch) => ({
-  Submit: () => {},
+  Submit: () => dispatch(Submit()),
 });
 
 export default connect(

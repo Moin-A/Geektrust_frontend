@@ -39,10 +39,10 @@ const slice = createSlice({
       return state.clone;
     },
     Submit: (state, { payload }) => {
-      state.opendialog = true;
+      state.opendialog = !state.opendialog;
     },
     CallSuccess: (state, { payload }) => {
-      state[Object.keys(payload.entities).toString()] = payload;
+      state[Object.keys(payload.entities).toString() || "token"] = payload;
       state.clone = { ..._.cloneDeep(state) };
     },
 
@@ -83,17 +83,13 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const loadApi = (url, name, method = "GET", data = {}) => (
-  dispatch,
-  getState
-) => {
+export const loadApi = (url, name, method = "GET", headers) => (dispatch) => {
   dispatch(
     actionsApi.apiCallBegan({
       method,
       url,
       name,
-      Headers,
-      data,
+      headers,
     })
   );
 };
