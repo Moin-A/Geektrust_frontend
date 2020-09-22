@@ -1,8 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import { DialogContent } from "@material-ui/core";
+import { DialogContent, DialogActions, Button } from "@material-ui/core";
 
 const styles = {
   root: {
@@ -14,6 +15,14 @@ class SimpleDialog extends React.Component {
   render() {
     const { classes, title, content, ...other } = this.props;
     const dia = { fontSize: "19px" };
+
+    const handleClickOpen = () => {
+      console.log("OPEn");
+    };
+
+    const handleClose = () => {
+      console.log("Close");
+    };
 
     return (
       <Dialog
@@ -42,6 +51,14 @@ class SimpleDialog extends React.Component {
           {title}
         </DialogTitle>
         <DialogContent dividers={true}>{content}</DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
       </Dialog>
     );
   }
@@ -49,4 +66,17 @@ class SimpleDialog extends React.Component {
 
 const SimpleDialogWrapped = withStyles(styles)(SimpleDialog);
 
-export default SimpleDialogWrapped;
+const mapStateToProps = (state) => ({
+  list: state.Destination.planets || {
+    entities: { planets: {} },
+    result: {},
+  },
+});
+const mapDispatchToProps = (dispatch) => ({
+  Submit: () => {},
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SimpleDialogWrapped);

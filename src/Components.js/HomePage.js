@@ -2,20 +2,24 @@ import React, { Component } from "react";
 import Slider from "./Slider";
 import { MDBCardTitle, MDBBtn, MDBIcon } from "mdbreact";
 import StoreContext from "../Context/storeContext";
-import { loadApi, selectPlanet } from "../Store/Slice/Destination";
+import { loadApi, selectPlanet, Submit } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
 import Dialog from "./Dialog";
 import Aslider from "./Aweslider";
 const Maps = ["First", "Second", "Third", "Fourth"];
 class HomePage extends Component {
   render() {
+    console.log(this.props.opendialog);
     return (
       <div className="container-fluid">
         <Dialog
           open={this.props.opendialog}
-          title={"Reset"}
-          content={"Reseting the counter"}
-        />
+          title={"SUBMIT"}
+          content={"Please confirm to Submit"}
+        >
+          <MDBBtn>button</MDBBtn>
+        </Dialog>
+
         <div className="row p-2">
           {Maps.map((item) => (
             <div className="col-lg-3 col-md-3  col-sm-6 ">
@@ -45,7 +49,13 @@ class HomePage extends Component {
         </div>
         <div className="row p-2">
           <div className="col justify-content-center mt-2 ">
-            <MDBBtn color="primary col justify-content-center ">Submit</MDBBtn>
+            <MDBBtn
+              disabled={this.props.count < 8}
+              onClick={this.props.Submit}
+              color="primary col justify-content-center "
+            >
+              Submit
+            </MDBBtn>
           </div>
         </div>
       </div>
@@ -57,8 +67,14 @@ const mapStateToProps = (state) => ({
     entities: { planets: {} },
     result: {},
   },
-  opendialog: state.opendialog,
+
+  count: state.Destination.count,
   userinput: state.Destination.userinput || {},
+  Submit: state.Destination.Submit,
+  opendialog: state.Destination.opendialog,
+});
+const mapDispatchToProps = (dispatch) => ({
+  Submit: () => dispatch(Submit()),
 });
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

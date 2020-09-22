@@ -5,6 +5,7 @@ import _ from "lodash";
 const slice = createSlice({
   name: "loadVehicleList",
   initialState: {
+    count: 0,
     opendialog: false,
     userinput: {
       First: {
@@ -37,9 +38,11 @@ const slice = createSlice({
     ResetCounter: (state, { payload }) => {
       return state.clone;
     },
+    Submit: (state, { payload }) => {
+      state.opendialog = true;
+    },
     CallSuccess: (state, { payload }) => {
       state[Object.keys(payload.entities).toString()] = payload;
-      // state[`clone${Object.keys(payload.entities).toString()}`] = payload;
       state.clone = { ..._.cloneDeep(state) };
     },
 
@@ -47,6 +50,7 @@ const slice = createSlice({
       state.planets.result = state.planets.result.filter(
         (item) => item !== payload.name
       );
+      state.count++;
       state.userinput = {
         ...state.userinput,
         [payload.destination]: {
@@ -59,11 +63,14 @@ const slice = createSlice({
 
     selectVehicle: (state, { payload }) => {
       --state.vehicle.entities.vehicle[payload.name].total_no;
+      state.count++;
       state.vehicle.result = state.vehicle.result.filter(
         (item) => item !== payload.name
       );
+
       state.userinput = {
         ...state.userinput,
+
         [payload.destination]: {
           ...state.userinput[payload.destination],
           vehiclename: payload.name,
@@ -76,16 +83,25 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const loadApi = (url, name) => (dispatch, getState) => {
+export const loadApi = (url, name, method = "GET", data = {}) => (
+  dispatch,
+  getState
+) => {
   dispatch(
     actionsApi.apiCallBegan({
+      method,
       url,
       name,
+      Headers,
+      data,
     })
   );
 };
 export const renderPlanetlist = (url) => (dispatch, getState) => {
   dispatch(slice.actions.selectPlanet(url));
+};
+export const Submit = () => (dispatch, getState) => {
+  dispatch(slice.actions.Submit());
 };
 
 export const renderVehiclelist = (url) => (dispatch, getState) => {
