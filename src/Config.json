@@ -1,4 +1,36 @@
 {
   "PlanetsEndpoint": "https://findfalcone.herokuapp.com/planets",
-  "VehicleApiEndpoint": "https://findfalcone.herokuapp.com/vehicles"
+  "VehicleApiEndpoint": "https://findfalcone.herokuapp.com/vehicles",
+  "tokenApiEndpoint": "https://findfalcone.herokuapp.com/token",
+  "findApiEndpoint": "https://findfalcone.herokuapp.com/find",
+  "initialstate": {
+    "count": 0,
+    "opendialog": false,
+    "userinput": {
+      "First": {
+        "planet_distance": null,
+        "vehicle_max_mileagae": null,
+        " planetname": null,
+        "vehiclename": null
+      },
+      "Second": {
+        "planet_distance": null,
+        "vehicle_max_mileagae": null,
+        "planetname": null,
+        " vehiclename": null
+      },
+      "Third": {
+        " planet_distance": null,
+        "vehicle_max_mileagae": null,
+        "planetname": null,
+        "vehiclename": null
+      },
+      "Fourth": {
+        "planet_distance": null,
+        "vehicle_max_mileagae": null,
+        "planetname": null,
+        "vehiclename": null
+      }
+    }
+  }
 }

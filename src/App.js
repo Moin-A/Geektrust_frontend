@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Config from "./Config.json";
 import Startup from "./Components.js/Signuppage";
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
@@ -14,20 +15,27 @@ const store = ConfiguresStore();
 
 class App extends Component {
   componentDidMount() {
+    console.log(Config.VehicleApiEndpoint);
     store.dispatch(
-      actions.loadApi("https://findfalcone.herokuapp.com/vehicles", "vehicle")
+      actions.loadApi({
+        url: Config.VehicleApiEndpoint,
+        name: "vehicle",
+      })
     );
     store.dispatch(
-      actions.loadApi("https://findfalcone.herokuapp.com/planets", "planets")
+      actions.loadApi({
+        url: Config.PlanetsEndpoint,
+        name: "planets",
+      })
     );
 
     store.dispatch(
-      actions.loadApi(
-        "https://findfalcone.herokuapp.com/token",
-        "token",
-        "POST",
-        { Accept: "application/json" }
-      )
+      actions.loadApi({
+        url: "https://findfalcone.herokuapp.com/token",
+        name: "token",
+        method: "POST",
+        headers: { Accept: "application/json" },
+      })
     );
   }
   render() {

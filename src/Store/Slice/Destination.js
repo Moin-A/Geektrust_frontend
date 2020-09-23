@@ -1,44 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as actionsApi from "../api";
 import _ from "lodash";
-
+import Config from "../../Config.json";
 const slice = createSlice({
   name: "loadVehicleList",
-  initialState: {
-    count: 0,
-    opendialog: false,
-    userinput: {
-      First: {
-        planet_distance: null,
-        vehicle_max_mileagae: null,
-        planetname: null,
-        vehiclename: null,
-      },
-      Second: {
-        planet_distance: null,
-        vehicle_max_mileagae: null,
-        planetname: null,
-        vehiclename: null,
-      },
-      Third: {
-        planet_distance: null,
-        vehicle_max_mileagae: null,
-        planetname: null,
-        vehiclename: null,
-      },
-      Fourth: {
-        planet_distance: null,
-        vehicle_max_mileagae: null,
-        planetname: null,
-        vehiclename: null,
-      },
-    },
-  },
+  initialState: Config.initialstate,
+
   reducers: {
     ResetCounter: (state, { payload }) => {
       return state.clone;
     },
     Submit: (state, { payload }) => {
+      debugger;
       state.opendialog = !state.opendialog;
     },
     CallSuccess: (state, { payload }) => {
@@ -83,16 +56,10 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const loadApi = (url, name, method = "GET", headers, data = {}) => (
-  dispatch
-) => {
+export const loadApi = ({ ...rest }) => (dispatch) => {
   dispatch(
     actionsApi.apiCallBegan({
-      method,
-      url,
-      name,
-      headers,
-      data,
+      ...rest,
     })
   );
 };
