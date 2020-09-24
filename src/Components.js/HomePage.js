@@ -21,8 +21,8 @@ class HomePage extends Component {
         </Dialog>
 
         <div className="row p-2">
-          {Maps.map((item) => (
-            <div className="col-lg-3 col-md-3  col-sm-6 ">
+          {Maps.map((item, index) => (
+            <div className="col-lg-3 col-md-3  col-sm-6 " key={index}>
               <div className="block-example border border-primary  rounded p-1 mb-2 ">
                 <h4 className="text-shadow" style={{ fontSize: "1rem" }}>
                   planet :

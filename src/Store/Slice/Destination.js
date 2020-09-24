@@ -11,7 +11,7 @@ const slice = createSlice({
       return state.clone;
     },
     Submit: (state, { payload }) => {
-      debugger;
+      state.finalUserResult = payload;
       state.opendialog = !state.opendialog;
     },
     CallSuccess: (state, { payload }) => {

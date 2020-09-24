@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Homepage from "./HomePage";
+
 import { Link } from "react-router-dom";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
-import { Jumbotron, Button, Col, Row } from "react-bootstrap";
+import { Jumbotron } from "react-bootstrap";
 
 class Info extends Component {
   state = {};

@@ -1,7 +1,7 @@
-import { Carousel, Button } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { renderPlanetlist } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
-import { MDBBtn, MDBView, MDBMask } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 import React, { useState } from "react";
 function ControlledCarousel(props) {
   const { list, destination, userinput } = props;
@@ -14,8 +14,8 @@ function ControlledCarousel(props) {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
-      {Object.values(entities.planets).map((item) => (
-        <Carousel.Item>
+      {Object.values(entities.planets).map((item, index) => (
+        <Carousel.Item key={index}>
           <img
             style={{
               height: "15rem",

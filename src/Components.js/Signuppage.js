@@ -1,19 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import ConfirmDialog from "./Dialog";
 import "../index.css";
 
 import Form from "../Utils/Form";
 import Joi from "joi-browser";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCardBody,
-  MDBCard,
-  MDBBtn,
-  MDBModal,
-  MDBModalBody,
-} from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCard } from "mdbreact";
 import Loginform from "./LoginPage";
 
 class BackgroundImagePage extends Form {

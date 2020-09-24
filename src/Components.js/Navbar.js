@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import React from "react";
+import { Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { resetCounter } from "../Store/Slice/Destination";
 import { Navbar, Button } from "react-bootstrap";
@@ -16,11 +16,18 @@ const Header = ({ resetCounter }) => {
           </MDBBtn>
         </Route>
       </Switch>
+      <Switch>
+        <Route exact path="/resultpage">
+          <Link to="/Homepage">
+            <Button color="primary">BACK</Button>
+          </Link>
+        </Route>
+      </Switch>
 
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end ">
         <Navbar.Text>
-          Signed in as: <a>Mark Ottokmxkms</a>
+          Signed in as: <span>Mark Ottokmxkms</span>
         </Navbar.Text>
       </Navbar.Collapse>
     </Navbar>

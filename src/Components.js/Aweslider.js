@@ -12,7 +12,7 @@ const CarouselPage = (props) => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
-  const { entities, result } = list;
+  const { entities } = list;
 
   return (
     <Carousel
@@ -22,8 +22,8 @@ const CarouselPage = (props) => {
       className="mt-1 rounded"
       interval={null}
     >
-      {Object.values(entities.vehicle).map((item) => (
-        <Carousel.Item>
+      {Object.values(entities.vehicle).map((item, index) => (
+        <Carousel.Item key={index}>
           <img
             style={{
               height: "15rem",
@@ -46,7 +46,7 @@ const CarouselPage = (props) => {
             <p>{`Max Dist :${item.max_distance}`}</p>
           </Carousel.Caption>
           <MDBBtn
-            disabled={item.total_no == 0 || userinput[destination].vehiclename}
+            disabled={item.total_no === 0 || userinput[destination].vehiclename}
             onClick={() => props.selectVehicle({ ...item, destination })}
             style={{
               position: "absolute",

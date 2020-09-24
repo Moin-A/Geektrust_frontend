@@ -5,6 +5,7 @@
   "findApiEndpoint": "https://findfalcone.herokuapp.com/find",
   "initialstate": {
     "count": 0,
+    "finalUserResult": null,
     "opendialog": false,
     "userinput": {
       "First": {

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Config from "./Config.json";
+
 import Startup from "./Components.js/Signuppage";
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
 import Navbar from "../src/Components.js/Navbar";
+import resultScreen from "./Components.js/ResultScreen";
 import Info from "./Components.js/info";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import Homepage from "./Components.js/HomePage";
@@ -15,16 +16,15 @@ const store = ConfiguresStore();
 
 class App extends Component {
   componentDidMount() {
-    console.log(Config.VehicleApiEndpoint);
     store.dispatch(
       actions.loadApi({
-        url: Config.VehicleApiEndpoint,
+        url: "https://findfalcone.herokuapp.com/vehicles",
         name: "vehicle",
       })
     );
     store.dispatch(
       actions.loadApi({
-        url: Config.PlanetsEndpoint,
+        url: "https://findfalcone.herokuapp.com/planets",
         name: "planets",
       })
     );
@@ -47,6 +47,7 @@ class App extends Component {
           <Route exact path="/" component={Startup} />
           <Route path="/profilepage" component={Homepage} />
           <Route path="/Homepage" component={Homepage} />
+          <Route path="/resultpage" component={resultScreen} />
         </Provider>
       </Router>
     );

@@ -1,10 +1,6 @@
 import React from "react";
 import Form from "../Utils/Form";
 import Joi from "joi-browser";
-import Card from "@material-ui/core/Card";
-import { Typography } from "@material-ui/core";
-import { Box } from "@material-ui/core";
-import { CardContent } from "@material-ui/core";
 
 class Loginform extends Form {
   pattern = /^[a-zA-Z0-9!@#$%&*]{3,25}$/;

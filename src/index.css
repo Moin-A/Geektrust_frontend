@@ -59,3 +59,8 @@ html {
 .text-shadow h4 {
   font-size: 1rem !important;
 }
+
+.center {
+  position: absolute;
+  top: 50%;
+}

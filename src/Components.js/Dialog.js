@@ -1,15 +1,14 @@
 import React from "react";
 import { Submit } from "../Store/Slice/Destination";
-import ConfiguresStore from "../Store/ConfigureStore";
+
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import http from "../Service/httpService";
-import { DialogContent, DialogActions, Button } from "@material-ui/core";
-import * as actions from "../Store/Slice/Destination";
 
-const store = ConfiguresStore();
+import { DialogContent, DialogActions, Button } from "@material-ui/core";
+
 const styles = {
   root: {
     backgroundColor: "transparent",
@@ -21,22 +20,12 @@ class SimpleDialog extends React.Component {
     const { classes, title, content, userinput, token, ...other } = this.props;
     const dia = { fontSize: "19px" };
 
-    const handleSubmit = async () => {
-      const body = {
-        token: token.result[0],
-        planet_names: Object.values(userinput).map((x) => x.planetname),
-        vehicle_names: Object.values(userinput).map((x) => x.vehiclename),
-      };
-
-      const response = await http.request({
-        url: "https://findfalcone.herokuapp.com/find",
-        method: "POST",
-        headers: { Accept: "application/json" },
-        data: body,
-      });
-      debugger;
-      this.props.Submit();
-    };
+    // const handleSubmit = async () => {
+    //   this.props.history.push({
+    //     pathname: "/profil",
+    //     state: { detail: null },
+    //   });
+    // };
 
     return (
       <Dialog
@@ -74,9 +63,9 @@ class SimpleDialog extends React.Component {
           >
             Disagree
           </Button>
-          <Button onClick={handleSubmit} color="primary">
-            Agree
-          </Button>
+          <Link to="/resultpage">
+            <Button color="primary">Agree</Button>
+          </Link>
         </DialogActions>
       </Dialog>
     );

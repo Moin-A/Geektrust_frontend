@@ -13,7 +13,6 @@ const api = ({ dispatch }) => (next) => async (action) => {
       method,
       data,
       headers,
-      data,
     });
 
     const NormalisedData = Normalize(response.data, action.payload.name);

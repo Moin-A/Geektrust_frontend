@@ -1,7 +1,7 @@
 import Joi from "joi-browser";
 import React, { Component } from "react";
 import INput from "../common/Input";
-import { MDBRow, MDBBtn } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 
 class Form extends Component {
   state = {
@@ -35,7 +35,7 @@ class Form extends Component {
   };
   handleChange = ({ currentTarget: input }) => {
     const { errors } = this.state;
-    const validateProperty = this.validateProperty(input);
+    // const validateProperty = this.validateProperty(input);
     errors[input.name] = this.validateProperty(input);
     const data = { ...this.state.data };
     data[input.name] = input.value;
