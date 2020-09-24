@@ -1,11 +1,11 @@
 import React from "react";
-import ConfirmDialog from "./Dialog";
+
 import "../index.css";
 import { connect } from "react-redux";
 import Form from "../Utils/Form";
 import Joi from "joi-browser";
-import { MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCard } from "mdbreact";
-import Loginform from "./LoginPage";
+import { MDBCardBody } from "mdbreact";
+
 import { setcred } from "../Store/Slice/Destination";
 
 class BackgroundImagePage extends Form {
@@ -26,53 +26,32 @@ class BackgroundImagePage extends Form {
         pathname: "/info",
         state: { detail: item },
       });
-      this.setState({ Dialog: false });
+      this.props.setDialog(false);
     }, 2000);
   };
 
   doSubmit() {
-    localStorage.setItem(this.state.data.Name, JSON.stringify(this.state.data));
-    this.setState({ Dialog: true });
+    localStorage.setItem(
+      this.state.data.Username,
+      JSON.stringify(this.state.data)
+    );
+    this.props.setDialog(true);
     this.doRouyte(this.state.data);
   }
 
   render() {
     return (
-      <div className="bg">
-        <MDBContainer>
-          <ConfirmDialog
-            open={this.state.Dialog}
-            title={this.state.title}
-            content={this.state.content}
-          />
-          <MDBRow>
-            <MDBCol md="4" className="mt-4 shadow-box-example z-depth-5">
-              <MDBCard id="classic-card">
-                <MDBCardBody className="white-text p-2">
-                  <form onSubmit={this.handleSubmit}>
-                    <h3 className="text-center">Register</h3>
-                    <hr className="hr-light" />
-                    {this.renderInput("Name", "Name")}
-                    {this.renderInput("Username", "Username")}
-                    {this.renderInput("Email", "Email")}
-                    {this.renderInput("Password", "Password", "Password")}
-                    {this.renderButton("Register")}
-                  </form>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol md="4" className="mt-4 shadow-box-example z-depth-5">
-              <MDBCard id="classic-card">
-                <MDBCardBody className="white-text p-2">
-                  <h3 className="text-center">Login</h3>
-                  <hr className="hr-light" />
-                  <Loginform doRouyte={this.doRouyte} />
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </div>
+      <MDBCardBody className="white-text p-2">
+        <form onSubmit={this.handleSubmit}>
+          <h3 className="text-center">Register</h3>
+          <hr className="hr-light" />
+          {this.renderInput("Name", "Name")}
+          {this.renderInput("Username", "Username")}
+          {this.renderInput("Email", "Email")}
+          {this.renderInput("Password", "Password", "Password")}
+          {this.renderButton("Register")}
+        </form>
+      </MDBCardBody>
     );
   }
 }

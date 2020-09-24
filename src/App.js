@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Startup from "./Components.js/Signuppage";
+import Startup from "./Components.js/Register_Signup";
 import ConfiguresStore from "./Store/ConfigureStore";
 import { Provider } from "react-redux";
 import Navbar from "../src/Components.js/Navbar";

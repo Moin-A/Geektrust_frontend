@@ -7,7 +7,7 @@ class Form extends Component {
   state = {
     title: "Registration successfull",
     content: "Thank you for registering",
-    data: { Username: "", Password: "", Name: "", Email: "" },
+    data: { Username: "", Password: "" },
     errors: {},
     Dialog: false,
   };
@@ -21,6 +21,7 @@ class Form extends Component {
     for (let item of error.details) {
       errors[item.path[0].name] = item.message;
     }
+    debugger;
     return errors;
   };
 
@@ -61,7 +62,7 @@ class Form extends Component {
     );
   }
 
-  renderInput(name, label, type = "text", formtype) {
+  renderInput(name, label, type = "text") {
     const { errors, data } = this.state;
     return (
       <INput
