@@ -4,6 +4,7 @@
   "tokenApiEndpoint": "https://findfalcone.herokuapp.com/token",
   "findApiEndpoint": "https://findfalcone.herokuapp.com/find",
   "initialstate": {
+    "setcredentials": null,
     "count": 0,
     "finalUserResult": null,
     "opendialog": false,

@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
 import { MDBBtn } from "mdbreact";
-
-import { Submit } from "../Store/Slice/Destination";
+import { submitfinal } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
 import Dialog from "./Dialog";
 import Aslider from "./Aweslider";
 const Maps = ["First", "Second", "Third", "Fourth"];
 class HomePage extends Component {
   render() {
-    console.log(this.props.opendialog);
     return (
       <div className="container-fluid">
         <Dialog
@@ -50,7 +48,7 @@ class HomePage extends Component {
           <div className="col justify-content-center mt-2 ">
             <MDBBtn
               disabled={this.props.count < 8}
-              onClick={this.props.Submit}
+              onClick={this.props.submitfinal}
               color="primary col justify-content-center "
             >
               Submit
@@ -69,11 +67,10 @@ const mapStateToProps = (state) => ({
 
   count: state.Destination.count,
   userinput: state.Destination.userinput || {},
-  Submit: state.Destination.Submit,
   opendialog: state.Destination.opendialog,
 });
 const mapDispatchToProps = (dispatch) => ({
-  Submit: () => dispatch(Submit()),
+  submitfinal: () => dispatch(submitfinal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import { renderPlanetlist } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
-import { MDBBtn } from "mdbreact";
+import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 function ControlledCarousel(props) {
   const { list, destination, userinput } = props;
@@ -33,7 +33,7 @@ function ControlledCarousel(props) {
               Distance <span>{`${item.distance}`}</span>
             </p>
           </Carousel.Caption>
-          <MDBBtn
+          <Button
             disabled={
               userinput[destination].planetname ||
               userinput[destination].vehicle_max_mileagae < item.distance ||
@@ -49,7 +49,7 @@ function ControlledCarousel(props) {
             color="info"
           >
             Select
-          </MDBBtn>
+          </Button>
         </Carousel.Item>
       ))}
     </Carousel>

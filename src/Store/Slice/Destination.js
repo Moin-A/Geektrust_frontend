@@ -10,7 +10,10 @@ const slice = createSlice({
     ResetCounter: (state, { payload }) => {
       return state.clone;
     },
-    Submit: (state, { payload }) => {
+    setcredentials: (state, { payload }) => {
+      state.setcredentials = payload;
+    },
+    submitfinal: (state, { payload }) => {
       state.finalUserResult = payload;
       state.opendialog = !state.opendialog;
     },
@@ -67,8 +70,8 @@ export const loadApi = ({ ...rest }) => (dispatch) => {
 export const renderPlanetlist = (url) => (dispatch, getState) => {
   dispatch(slice.actions.selectPlanet(url));
 };
-export const Submit = () => (dispatch, getState) => {
-  dispatch(slice.actions.Submit());
+export const submitfinal = () => (dispatch, getState) => {
+  dispatch(slice.actions.submitfinal());
 };
 
 export const renderVehiclelist = (url) => (dispatch, getState) => {
@@ -78,5 +81,8 @@ export const renderVehiclelist = (url) => (dispatch, getState) => {
 export const resetCounter = () => (dispatch, getState) => {
   dispatch(slice.actions.ResetCounter());
 };
+export const setcred = (item) => (dispatch, getState) => {
+  dispatch(slice.actions.setcredentials(item));
+};
 
-export const { CallSuccess } = slice.actions;
+export const { CallSuccess, setcredentials } = slice.actions;

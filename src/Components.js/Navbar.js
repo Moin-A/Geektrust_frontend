@@ -5,7 +5,7 @@ import { resetCounter } from "../Store/Slice/Destination";
 import { Navbar, Button } from "react-bootstrap";
 import { MDBBtn } from "mdbreact";
 
-const Header = ({ resetCounter }) => {
+const Header = ({ userinput }) => {
   return (
     <Navbar bg="secondary" variant="dark" sticky="top">
       <Navbar.Brand href="#home">Moin</Navbar.Brand>
@@ -27,7 +27,7 @@ const Header = ({ resetCounter }) => {
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end ">
         <Navbar.Text>
-          Signed in as: <span>Mark Ottokmxkms</span>
+          Signed in as: <span>{userinput.Username}</span>
         </Navbar.Text>
       </Navbar.Collapse>
     </Navbar>
@@ -35,11 +35,7 @@ const Header = ({ resetCounter }) => {
 };
 
 const mapStateToProps = (state) => ({
-  clone: state.Destination.clone || {},
+  userinput: state.Destination.setcredentials || { Username: null },
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  resetCounter: (clone) => dispatch(resetCounter(clone)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

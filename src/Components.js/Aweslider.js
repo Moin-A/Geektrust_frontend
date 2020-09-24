@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
-import { MDBBtn } from "mdbreact";
+import { Button } from "react-bootstrap";
 import { renderVehiclelist } from "../Store/Slice/Destination";
 
 const CarouselPage = (props) => {
@@ -45,7 +45,7 @@ const CarouselPage = (props) => {
             <p>{`Count :${item.total_no}`}</p>
             <p>{`Max Dist :${item.max_distance}`}</p>
           </Carousel.Caption>
-          <MDBBtn
+          <Button
             disabled={item.total_no === 0 || userinput[destination].vehiclename}
             onClick={() => props.selectVehicle({ ...item, destination })}
             style={{
@@ -56,7 +56,7 @@ const CarouselPage = (props) => {
             color="info"
           >
             Select
-          </MDBBtn>
+          </Button>
         </Carousel.Item>
       ))}
     </Carousel>

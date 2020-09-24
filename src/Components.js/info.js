@@ -7,6 +7,7 @@ import { Jumbotron } from "react-bootstrap";
 
 class Info extends Component {
   state = {};
+
   render() {
     return (
       <Jumbotron>

@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../Utils/Form";
 import Joi from "joi-browser";
-
+import ConfirmDialog from "./Dialog";
 class Loginform extends Form {
   pattern = /^[a-zA-Z0-9!@#$%&*]{3,25}$/;
   schema = {
@@ -10,35 +10,31 @@ class Loginform extends Form {
   };
 
   doSubmit() {
-    let item = localStorage.getItem(this.state.data.Username);
-    if (item) {
-      setTimeout(() => {
-        this.props.history.push({
-          pathname: "/profilepage",
-          state: { detail: this.state.data.Username },
-        });
-      }, 5000);
-    } else {
-      this.setState({
-        title: "User is not registered",
-        content: "please head to Signup page",
-        Dialog: true,
-      });
+    let item = JSON.parse(localStorage.getItem(this.state.data.Username));
+    this.setState({ Dialog: true });
+    if (item !== null) {
       setTimeout(() => {
         this.setState({ Dialog: false });
-      }, 2000);
+      }, 1000);
     }
+
+    this.props.doRouyte(item);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.renderInput("Username", "Username")}
-        {this.renderInput("Password", "Password", "password")}
-        {this.renderButton("LOGIN")}
-      </form>
+      <React.Fragment>
+        <ConfirmDialog title={"Login Success"} open={this.state.Dialog} />
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("Username", "Username")}
+          {this.renderInput("Password", "Password", "Password")}
+          {this.renderButton("LOGIN")}
+        </form>
+      </React.Fragment>
     );
   }
 }
 
 export default Loginform;
+
+// Username: "", Password: ""

@@ -1,13 +1,13 @@
 import Joi from "joi-browser";
 import React, { Component } from "react";
 import INput from "../common/Input";
-import { MDBBtn } from "mdbreact";
+import { Button } from "react-bootstrap";
 
 class Form extends Component {
   state = {
     title: "Registration successfull",
     content: "Thank you for registering",
-    data: { Username: "", Password: "" },
+    data: { Username: "", Password: "", Name: "", Email: "" },
     errors: {},
     Dialog: false,
   };
@@ -26,16 +26,12 @@ class Form extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const errors = this.validate();
     this.setState({ errors: errors || {} });
-    localStorage.setItem(this.state.data.Name, JSON.stringify(this.state.data));
-
     this.doSubmit();
   };
   handleChange = ({ currentTarget: input }) => {
     const { errors } = this.state;
-    // const validateProperty = this.validateProperty(input);
     errors[input.name] = this.validateProperty(input);
     const data = { ...this.state.data };
     data[input.name] = input.value;
@@ -54,18 +50,18 @@ class Form extends Component {
   renderButton(label) {
     return (
       <div className="text-center mt-4">
-        <MDBBtn
+        <Button
           type="submit"
           disabled={this.validate()}
           className="btn btn-primary col"
         >
           {label}
-        </MDBBtn>
+        </Button>
       </div>
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = "text", formtype) {
     const { errors, data } = this.state;
     return (
       <INput

@@ -41,9 +41,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Route path="/info" component={Info} />
         <Provider store={store}>
           <Navbar />
+          <Route path="/info" component={Info} />
           <Route exact path="/" component={Startup} />
           <Route path="/profilepage" component={Homepage} />
           <Route path="/Homepage" component={Homepage} />
