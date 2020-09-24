@@ -50,6 +50,7 @@ const slice = createSlice({
         [payload.destination]: {
           ...state.userinput[payload.destination],
           vehiclename: payload.name,
+          vehiclespeed: payload.speed,
           vehicle_max_mileagae: payload.max_distance,
         },
       };

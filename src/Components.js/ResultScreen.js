@@ -15,6 +15,14 @@ class screen extends Component {
         (x) => x.vehiclename
       ),
     };
+
+    const Totaldistance = Object.values(this.props.userinput).reduce(
+      (total, value) => {
+        return total + value.vehiclespeed * value.planet_distance;
+      },
+      0
+    );
+
     const response = await http.request({
       url: "https://findfalcone.herokuapp.com/find",
       method: "POST",
@@ -22,7 +30,7 @@ class screen extends Component {
       data: body,
     });
 
-    this.setState({ result: response.data });
+    this.setState({ result: response.data, Totaldistance });
     this.props.submitfinal();
   };
   state = { result: { status: null } };
@@ -41,7 +49,7 @@ class screen extends Component {
         <React.Fragment>
           <div className="text-center center text-shadow col">
             <p style={{ fontSize: "4rem" }}>Failed Mission</p>
-            <p>Queen was not fount in your expedetion</p>
+            <p>Queen was not founD in your expedetion</p>
           </div>
         </React.Fragment>
       );
@@ -49,11 +57,16 @@ class screen extends Component {
     if (this.state.result.status === "success") {
       return (
         <React.Fragment>
+          <Confetti />
           <div className="text-center center text-shadow col">
             <p style={{ fontSize: "4rem" }}>SUCCESS</p>
             <p>{`Queen was found on the planet ${this.state.result.planet_name}`}</p>
+            <p>{`It took the expededion team ${
+              this.state.Totaldistance
+            } hrs/${Math.round(
+              this.state.Totaldistance * 0.0416667
+            )} days for the entire journey`}</p>
           </div>
-          <Confetti />
         </React.Fragment>
       );
     }

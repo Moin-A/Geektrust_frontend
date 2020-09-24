@@ -7,9 +7,12 @@ import { connect } from "react-redux";
 import { MDBContainer, MDBRow, MDBCol, MDBCard } from "mdbreact";
 
 class register_signup extends Component {
-  state = { title: "Register", content: "Thank you for Registering" };
+  state = {
+    title: "Register",
+    content: "Thank you for Registering",
+    Dialog: false,
+  };
   render() {
-    debugger;
     return (
       <div className="bg">
         <MDBContainer>
@@ -42,9 +45,7 @@ class register_signup extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  userinput: state.Destination.userinput,
-});
+const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
   setcred: (item) => dispatch(setcred(item)),
 });

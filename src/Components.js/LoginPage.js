@@ -24,7 +24,7 @@ class Loginform extends Form {
   };
   doSubmit() {
     let item = JSON.parse(localStorage.getItem(this.state.data.Username));
-    if (item == null) {
+    if (item === null) {
       this.setState({
         Dialog: true,
         title: "User not Registered",
@@ -35,7 +35,7 @@ class Loginform extends Form {
       }, 1000);
       return;
     }
-    if (item.Password == this.state.data.Password) {
+    if (item.Password === this.state.data.Password) {
       this.props.setDialog(true);
       setTimeout(() => {
         this.props.setDialog(false);

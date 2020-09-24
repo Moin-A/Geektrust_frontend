@@ -12,26 +12,30 @@
       "First": {
         "planet_distance": null,
         "vehicle_max_mileagae": null,
-        " planetname": null,
-        "vehiclename": null
+        "planetname": null,
+        "vehiclename": null,
+        "vehiclespeed": null
       },
       "Second": {
         "planet_distance": null,
         "vehicle_max_mileagae": null,
         "planetname": null,
-        " vehiclename": null
+        "vehiclename": null,
+        "vehiclespeed": null
       },
       "Third": {
-        " planet_distance": null,
+        "planet_distance": null,
         "vehicle_max_mileagae": null,
         "planetname": null,
-        "vehiclename": null
+        "vehiclename": null,
+        "vehiclespeed": null
       },
       "Fourth": {
         "planet_distance": null,
         "vehicle_max_mileagae": null,
         "planetname": null,
-        "vehiclename": null
+        "vehiclename": null,
+        "vehiclespeed": null
       }
     }
   }

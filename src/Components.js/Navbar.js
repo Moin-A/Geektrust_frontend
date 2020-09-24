@@ -5,7 +5,7 @@ import { resetCounter } from "../Store/Slice/Destination";
 import { Navbar, Button } from "react-bootstrap";
 import { MDBBtn } from "mdbreact";
 
-const Header = ({ userinput }) => {
+const Header = ({ userinput, resetCounter }) => {
   return (
     <Navbar bg="secondary" variant="dark" sticky="top">
       <Navbar.Brand href="#home">Moin</Navbar.Brand>
@@ -38,4 +38,8 @@ const mapStateToProps = (state) => ({
   userinput: state.Destination.setcredentials || { Username: null },
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  resetCounter: () => dispatch(resetCounter()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
