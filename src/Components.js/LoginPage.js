@@ -63,7 +63,7 @@ class Loginform extends Form {
         />
         <MDBCardBody className="white-text p-2">
           <form onSubmit={this.handleSubmit}>
-            <h3 className="text-center">Register</h3>
+            <h3 className="text-center">LOGIN</h3>
             <hr className="hr-light" />
 
             {this.renderInput("Username", "Username")}
