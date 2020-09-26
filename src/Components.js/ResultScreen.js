@@ -51,6 +51,11 @@ class screen extends Component {
           <div className="text-center center text-shadow col">
             <p style={{ fontSize: "4rem" }}>Failed Mission</p>
             <p>Queen was not founD in your expedetion</p>
+            <p>{`It took the expededion team ${
+              this.state.Totaldistance
+            } hrs/${Math.round(
+              this.state.Totaldistance * 0.0416667
+            )} days for the entire journey`}</p>
           </div>
         </React.Fragment>
       );
