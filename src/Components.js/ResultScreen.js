@@ -71,7 +71,7 @@ class screen extends Component {
               this.state.Totaldistance
             } hrs/${Math.round(
               this.state.Totaldistance * 0.0416667
-            )} days for the entire journey`}</p>
+            )} days for the finish the search`}</p>
           </div>
         </React.Fragment>
       );
