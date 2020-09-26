@@ -31,7 +31,7 @@ class App extends Component {
 
     store.dispatch(
       actions.loadApi({
-        url: Config.tokenApiEndpoint,
+        url: "https://findfalcone.herokuapp.com/token",
         name: "token",
         method: "POST",
         headers: { Accept: "application/json" },

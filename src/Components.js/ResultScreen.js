@@ -26,6 +26,7 @@ class screen extends Component {
 
     const response = await http.request({
       url: Config.findApiEndpoint,
+      method: "POST",
       headers: { Accept: "application/json" },
       data: body,
     });
