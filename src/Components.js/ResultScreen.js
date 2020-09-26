@@ -3,6 +3,7 @@ import Confetti from "react-confetti";
 import { submitfinal } from "../Store/Slice/Destination";
 import { connect } from "react-redux";
 import http from "../Service/httpService";
+import Config from "../Config.json";
 
 class screen extends Component {
   componentDidMount = async () => {
@@ -24,8 +25,7 @@ class screen extends Component {
     );
 
     const response = await http.request({
-      url: "https://findfalcone.herokuapp.com/find",
-      method: "POST",
+      url: Config.findApiEndpoint,
       headers: { Accept: "application/json" },
       data: body,
     });
